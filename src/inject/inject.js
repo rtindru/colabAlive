@@ -15,5 +15,5 @@ chrome.extension.sendMessage({}, function (response) {
 // Credit to https://medium.com/@shivamrawat_756/how-to-prevent-google-colab-from-disconnecting-717b88a128c0
 function ClickConnect() {
 	console.log("Keeping Colab Alive!");
-	document.querySelector("colab-toolbar-button#connect").click()
+	document.querySelector("colab-connect-button").click()
 }
