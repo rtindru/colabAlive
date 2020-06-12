@@ -19,7 +19,7 @@ function clickConnect() {
 		document.querySelector("colab-connect-button").click()
 		console.log("Keeping Colab Alive!");	
 	} catch (error) {
-		console.log(err);
+		console.log(error);
 	}
 }
 
@@ -28,6 +28,6 @@ function ligboxConnect() {
 		document.querySelector("paper-dialog paper-button#ok").click()	
 		console.log('Prevented disconnection')
 	} catch (error) {
-		console.log(err);
+		console.log(error);
 	}
 }
