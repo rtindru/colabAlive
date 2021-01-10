@@ -7,8 +7,8 @@ chrome.extension.sendMessage({}, function (response) {
 			// This part of the script triggers when page is done loading
 			console.log("Hello. This message was sent from scripts/inject.js");
 			// ----------------------------------------------------------
-			setInterval(clickConnect, 60000);
-			setInterval(ligboxConnect, 60000);
+			setInterval(clickConnect, 780000);
+			setInterval(ligboxConnect, 780010);
 		}
 	}, 10);
 });
@@ -25,7 +25,7 @@ function clickConnect() {
 
 function ligboxConnect() {
 	try {
-		document.querySelector("paper-dialog paper-button#ok").click()	
+		document.querySelector("paper-button dialog-dismiss").click()	
 		console.log('Prevented disconnection')
 	} catch (error) {
 		console.log(error);
