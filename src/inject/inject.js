@@ -20,7 +20,7 @@ function clickConnect() {
 		 document.querySelector("#top-toolbar > colab-connect-button").shadowRoot.querySelector("#connect").click();
 		// this also works, if above one doesn't work, comment it and uncomment below one
 		//document.querySelector("colab-connect-button").shadowRoot.getElementById('connect').click();
-		setTimeout(clickDismiss, 2000)
+		setTimeout(clickDismiss, 2000);
 		console.log("Keeping Colab Alive!");	
 	} catch (error) {
 		console.log(error);
@@ -30,7 +30,7 @@ function clickConnect() {
 function clickDismiss() {
 	try {
 		document.querySelector('colab-sessions-dialog').shadowRoot.querySelector('.dismiss').click();
-		console.log('clicked on dismiss button')
+		console.log('clicked on dismiss button');
 	} catch (error) {
 		console.log(error);
 	}
