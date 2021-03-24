@@ -7,26 +7,30 @@ chrome.extension.sendMessage({}, function (response) {
 			// This part of the script triggers when page is done loading
 			console.log("Hello. This message was sent from scripts/inject.js");
 			// ----------------------------------------------------------
-			setInterval(clickConnect, 60000);
-			setInterval(ligboxConnect, 60000);
+			setInterval(clickConnect, 60000);	//1 minute
+			//setInterval(clickConnect, 20000);	//20 sec
 		}
 	}, 10);
 });
 
+
 // Credit to https://medium.com/@shivamrawat_756/how-to-prevent-google-colab-from-disconnecting-717b88a128c0
 function clickConnect() {
 	try {
-		document.querySelector("colab-connect-button").click()
+		 document.querySelector("#top-toolbar > colab-connect-button").shadowRoot.querySelector("#connect").click();
+		// this also works, if above one doesn't work, comment it and uncomment below one
+		//document.querySelector("colab-connect-button").shadowRoot.getElementById('connect').click();
+		setTimeout(clickDismiss, 2000);
 		console.log("Keeping Colab Alive!");	
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-function ligboxConnect() {
+function clickDismiss() {
 	try {
-		document.querySelector("paper-dialog paper-button#ok").click()	
-		console.log('Prevented disconnection')
+		document.querySelector('colab-sessions-dialog').shadowRoot.querySelector('.dismiss').click();
+		console.log('clicked on dismiss button');
 	} catch (error) {
 		console.log(error);
 	}
