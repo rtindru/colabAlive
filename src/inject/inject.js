@@ -20,20 +20,43 @@ function clickConnect() {
 		 document.querySelector("#top-toolbar > colab-connect-button").shadowRoot.querySelector("#connect").click();
 		// this also works, if above one doesn't work, comment it and uncomment below one
 		//document.querySelector("colab-connect-button").shadowRoot.getElementById('connect').click();
-		setTimeout(clickDismiss, 2000);
+		setTimeout(clickDismiss, 500);
 		console.log("Keeping Colab Alive!");	
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-function clickDismiss() {
-	try {		
-		//colab design changed again
-		document.querySelector("paper-tab").querySelector("paper-icon-button").shadowRoot.getElementById('icon').click();
-		//document.querySelector('colab-sessions-dialog').shadowRoot.querySelector('.dismiss').click();
-		console.log('clicked on dismiss button');
-	} catch (error) {
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function clickDismiss() {
+	
+	try {	
+		
+		// click manage session button
+		document.querySelector("colab-usage-display").shadowRoot.querySelector("paper-button").click();
+	
+		} catch (error) {
 		console.log(error);
 	}
+	
+		try {
+			// leave from manage session window
+			await sleep(1000);
+			document.querySelector('colab-sessions-dialog').shadowRoot.querySelector('.dismiss').click();
+				} catch (error) {
+		console.log(error);
+	}
+	
+		try {	
+			// click close button
+			await sleep(1000);
+			document.querySelector("paper-tab").querySelector("paper-icon-button").shadowRoot.getElementById('icon').click();
+				} catch (error) {
+		console.log(error);
+	}
+	
 }
